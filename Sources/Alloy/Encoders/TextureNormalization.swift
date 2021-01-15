@@ -53,10 +53,10 @@ final public class TextureNormalization {
     public func encode(source: MTLTexture,
                        destination: MTLTexture,
                        using encoder: MTLComputeCommandEncoder) {
-        self.textureMax(source: source,
+        self.textureMax.callAsFunction(source: source,
                         result: self.intermediateBuffer,
                         using: encoder)
-        self.textureDivide(source: source,
+        self.textureDivide.callAsFunction(source: source,
                            destination: destination,
                            constant: self.intermediateBuffer,
                            using: encoder)
